@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AFRONEXIA — Wireframes de UI/UX</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #eeece6;
+    color: #333;
+  }
+  header.top {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 16px 24px;
+  }
+  header.top h1 {
+    margin: 0 0 4px;
+    font-size: 18px;
+  }
+  header.top p {
+    margin: 0;
+    font-size: 12px;
+    color: #888;
+  }
+  nav.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    background: #fff;
+    padding: 10px 24px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+  }
+  nav.tabs button {
+    border: 1px solid #ccc;
+    background: #fafafa;
+    color: #555;
+    padding: 7px 14px;
+    font-size: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  nav.tabs button.activo {
+    background: #1b5e20;
+    border-color: #1b5e20;
+    color: #fff;
+  }
+  main {
+    max-width: 1000px;
+    margin: 24px auto 60px;
+    padding: 0 24px;
+  }
+  .pantalla { display: none; }
+  .pantalla.activa { display: block; }
+  .frame {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 20px;
+  }
+  .etiqueta {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #999;
+    margin-bottom: 4px;
+  }
+  .wf-box {
+    border: 1.5px dashed #9a9a9a;
+    background: #fff;
+    border-radius: 4px;
+  }
+  .wf-img {
+    background-image: repeating-linear-gradient(45deg, #e3e3e3, #e3e3e3 8px, #f4f4f4 8px, #f4f4f4 16px);
+    border: 1.5px dashed #9a9a9a;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 10px;
+    letter-spacing: .5px;
+  }
+  .wf-line {
+    background: #c9c9c9;
+    height: 8px;
+    border-radius: 2px;
+  }
+  .wf-line.short { width: 35%; }
+  .wf-line.med { width: 60%; }
+  .wf-line.long { width: 90%; }
+  .wf-btn {
+    border: 1.5px solid #444;
+    background: #fff;
+    text-align: center;
+    padding: 9px;
+    font-size: 12px;
+    color: #444;
+    border-radius: 4px;
+  }
+  .wf-btn.solido {
+    background: #444;
+    color: #fff;
+  }
+  .wf-input {
+    border: 1.5px solid #999;
+    height: 34px;
+    border-radius: 4px;
+    background: #fff;
+  }
+  .fila { display: flex; gap: 12px; }
+  .col { flex: 1; }
+  .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .stack { display: flex; flex-direction: column; gap: 8px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>AFRONEXIA — Wireframes de UI/UX</h1>
+  <p>Baja fidelidad · estructura y jerarquía de las 6 pantallas principales del sistema</p>
+</header>
+
+<nav class="tabs" id="tabs"></nav>
+
+<main id="pantallas"></main>
+
+<script>
+const pantallas = [
+  { id: "home", nombre: "1. Home" },
+  { id: "auth", nombre: "2. Login / Registro" },
+  { id: "catalogo", nombre: "3. Catálogo" },
+  { id: "detalle", nombre: "4. Detalle" },
+  { id: "perfil", nombre: "5. Perfil emprendedor" },
+  { id: "admin", nombre: "6. Dashboard admin" },
+];
+
+const tabsEl = document.getElementById("tabs");
+pantallas.forEach((p, i) => {
+  const btn = document.createElement("button");
+  btn.textContent = p.nombre;
+  btn.className = i === 0 ? "activo" : "";
+  btn.onclick = () => mostrar(p.id, btn);
+  tabsEl.appendChild(btn);
+});
+
+function mostrar(id, btnActivo) {
+  document.querySelectorAll(".pantalla").forEach((el) => el.classList.remove("activa"));
+  document.getElementById(id).classList.add("activa");
+  document.querySelectorAll("nav.tabs button").forEach((b) => b.classList.remove("activo"));
+  btnActivo.classList.add("activo");
+}
+</script>
+
+<div id="pantallas-contenido">
+
+  <!-- 1. HOME -->
+  <section id="home" class="pantalla activa">
+    <div class="frame stack" style="gap:22px;">
+      <span class="etiqueta">Encabezado</span>
+      <div class="fila" style="align-items:center; justify-content:space-between; margin-top:-14px;">
+        <div class="wf-box" style="width:120px; height:28px;"></div>
+        <div class="fila">
+          <div class="wf-line short" style="width:60px; align-self:center;"></div>
+          <div class="wf-btn" style="width:110px;">Iniciar sesión</div>
+        </div>
+      </div>
+
+      <span class="etiqueta">Hero</span>
+      <div class="wf-box" style="padding:28px; margin-top:-14px;">
+        <div class="stack" style="max-width:420px; gap:10px;">
+          <div class="wf-line long" style="height:16px;"></div>
+          <div class="wf-line med" style="height:16px;"></div>
+          <div class="wf-line short"></div>
+          <div class="wf-btn solido" style="width:170px; margin-top:8px;">Explorar la oferta</div>
+        </div>
+      </div>
+
+      <span class="etiqueta">Ejes del proyecto</span>
+      <div class="grid-cards" style="margin-top:-14px;">
+        <div class="wf-box" style="padding:16px;" >
+          <div class="wf-img" style="height:50px; margin-bottom:8px;">icono</div>
+          <div class="wf-line short"></div>
+        </div>
+        <div class="wf-box" style="padding:16px;">
+          <div class="wf-img" style="height:50px; margin-bottom:8px;">icono</div>
+          <div class="wf-line short"></div>
+        </div>
+        <div class="wf-box" style="padding:16px;">
+          <div class="wf-img" style="height:50px; margin-bottom:8px;">icono</div>
+          <div class="wf-line short"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. LOGIN / REGISTRO -->
+  <section id="auth" class="pantalla">
+    <div class="fila" style="gap:24px; align-items:flex-start;">
+      <div class="frame stack" style="flex:1; gap:12px;">
+        <span class="etiqueta">Login — HU-03</span>
+        <div class="wf-line med" style="height:18px; margin:0 auto;"></div>
+        <div class="wf-input"></div>
+        <div class="wf-input"></div>
+        <div class="wf-btn solido">Entrar</div>
+        <div class="wf-line short" style="margin-top:6px;"></div>
+      </div>
+      <div class="frame stack" style="flex:1; gap:12px;">
+        <span class="etiqueta">Registro — HU-02</span>
+        <div class="wf-line med" style="height:18px; margin:0 auto;"></div>
+        <div class="wf-input"></div>
+        <div class="wf-input"></div>
+        <div class="wf-input"></div>
+        <div class="wf-btn solido">Registrarme</div>
+        <div class="wf-line short" style="margin-top:6px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CATALOGO -->
+  <section id="catalogo" class="pantalla">
+    <div class="frame stack" style="gap:16px;">
+      <span class="etiqueta">Buscador y filtros — HU-04</span>
+      <div class="fila" style="margin-top:-10px;">
+        <div class="wf-input" style="flex:2;"></div>
+        <div class="wf-input" style="flex:1;"></div>
+      </div>
+
+      <span class="etiqueta">Resultados (tarjetas)</span>
+      <div class="grid-cards" style="margin-top:-10px;">
+        <div class="wf-box" style="padding:10px;">
+          <div class="wf-img" style="height:70px; margin-bottom:8px;">img</div>
+          <div class="wf-line short" style="margin-bottom:6px;"></div>
+          <div class="wf-line med"></div>
+        </div>
+        <div class="wf-box" style="padding:10px;">
+          <div class="wf-img" style="height:70px; margin-bottom:8px;">img</div>
+          <div class="wf-line short" style="margin-bottom:6px;"></div>
+          <div class="wf-line med"></div>
+        </div>
+        <div class="wf-box" style="padding:10px;">
+          <div class="wf-img" style="height:70px; margin-bottom:8px;">img</div>
+          <div class="wf-line short" style="margin-bottom:6px;"></div>
+          <div class="wf-line med"></div>
+        </div>
+        <div class="wf-box" style="padding:10px;">
+          <div class="wf-img" style="height:70px; margin-bottom:8px;">img</div>
+          <div class="wf-line short" style="margin-bottom:6px;"></div>
+          <div class="wf-line med"></div>
+        </div>
+        <div class="wf-box" style="padding:10px;">
+          <div class="wf-img" style="height:70px; margin-bottom:8px;">img</div>
+          <div class="wf-line short" style="margin-bottom:6px;"></div>
+          <div class="wf-line med"></div>
+        </div>
+        <div class="wf-box" style="padding:10px;">
+          <div class="wf-img" style="height:70px; margin-bottom:8px;">img</div>
+          <div class="wf-line short" style="margin-bottom:6px;"></div>
+          <div class="wf-line med"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. DETALLE -->
+  <section id="detalle" class="pantalla">
+    <div class="frame">
+      <span class="etiqueta">Banner</span>
+      <div class="wf-img" style="height:160px; margin:6px 0 16px;">imagen principal</div>
+
+      <div class="fila" style="gap:24px; align-items:flex-start;">
+        <div class="col stack" style="gap:10px;">
+          <span class="etiqueta">Información — RF-07</span>
+          <div class="wf-line short" style="margin-top:-4px;"></div>
+          <div class="wf-line long" style="height:18px;"></div>
+          <div class="wf-line long"></div>
+          <div class="wf-line long"></div>
+          <div class="wf-line med"></div>
+        </div>
+        <div class="col stack" style="gap:10px; max-width:220px;">
+          <span class="etiqueta">Mapa — RF-08</span>
+          <div class="wf-img" style="height:100px; margin-top:-4px;">mapa</div>
+          <span class="etiqueta">Acciones</span>
+          <div class="wf-btn solido" style="margin-top:-4px;">Contactar</div>
+          <div class="fila">
+            <div class="wf-btn" style="flex:1;">☆ Favorito</div>
+            <div class="wf-btn" style="flex:1;">★★★★☆</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PERFIL EMPRENDEDOR -->
+  <section id="perfil" class="pantalla">
+    <div class="frame stack" style="gap:16px;">
+      <span class="etiqueta">Mis emprendimientos — HU-06</span>
+      <div class="stack" style="gap:8px; margin-top:-10px;">
+        <div class="wf-box fila" style="padding:10px; align-items:center;">
+          <div class="wf-img" style="width:44px; height:44px; flex-shrink:0;"></div>
+          <div class="stack" style="gap:6px; flex:1; margin-left:10px;">
+            <div class="wf-line short"></div>
+            <div class="wf-line med"></div>
+          </div>
+        </div>
+        <div class="wf-box fila" style="padding:10px; align-items:center;">
+          <div class="wf-img" style="width:44px; height:44px; flex-shrink:0;"></div>
+          <div class="stack" style="gap:6px; flex:1; margin-left:10px;">
+            <div class="wf-line short"></div>
+            <div class="wf-line med"></div>
+          </div>
+        </div>
+      </div>
+
+      <span class="etiqueta">Registrar nuevo — HU-05</span>
+      <div class="stack" style="gap:10px; max-width:420px; margin-top:-10px;">
+        <div class="wf-input"></div>
+        <div class="wf-input"></div>
+        <div class="wf-box" style="height:64px;"></div>
+        <div class="wf-input"></div>
+        <div class="wf-btn solido" style="width:120px;">Guardar</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. DASHBOARD ADMIN -->
+  <section id="admin" class="pantalla">
+    <div class="fila" style="gap:16px; align-items:flex-start;">
+      <div class="frame stack" style="width:170px; gap:10px; flex-shrink:0;">
+        <span class="etiqueta">Menú — RF-14</span>
+        <div class="wf-line med" style="margin-top:-4px;"></div>
+        <div class="wf-line med"></div>
+        <div class="wf-line med"></div>
+        <div class="wf-line med"></div>
+        <div class="wf-line med"></div>
+      </div>
+      <div class="frame stack" style="flex:1; gap:16px;">
+        <span class="etiqueta">Indicadores — RF-13</span>
+        <div class="grid-cards" style="grid-template-columns: repeat(4,1fr); margin-top:-10px;">
+          <div class="wf-box" style="padding:12px;"><div class="wf-line short" style="height:16px; margin-bottom:8px;"></div><div class="wf-line med"></div></div>
+          <div class="wf-box" style="padding:12px;"><div class="wf-line short" style="height:16px; margin-bottom:8px;"></div><div class="wf-line med"></div></div>
+          <div class="wf-box" style="padding:12px;"><div class="wf-line short" style="height:16px; margin-bottom:8px;"></div><div class="wf-line med"></div></div>
+          <div class="wf-box" style="padding:12px;"><div class="wf-line short" style="height:16px; margin-bottom:8px;"></div><div class="wf-line med"></div></div>
+        </div>
+
+        <span class="etiqueta">Uso a lo largo del tiempo — RF-16</span>
+        <div class="wf-img" style="height:110px; margin-top:-10px;">gráfico</div>
+
+        <span class="etiqueta">Registro / auditoría — RF-20</span>
+        <div class="wf-box stack" style="padding:10px; gap:8px; margin-top:-10px;">
+          <div class="wf-line long"></div>
+          <div class="wf-line long"></div>
+          <div class="wf-line med"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

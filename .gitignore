@@ -1,0 +1,17 @@
+# Dependencias (se reinstalan con npm install)
+node_modules/
+
+# Variables de entorno con credenciales reales — nunca se versionan
+.env
+.env.local
+
+# Build de producción del frontend
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operativo / editores
+.DS_Store
+.vscode/

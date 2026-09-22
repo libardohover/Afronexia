@@ -1,0 +1,70 @@
+:root {
+  --color-verde: #1b5e20;
+  --color-verde-claro: #e8f5e9;
+  --color-naranja: #e65100;
+  --color-naranja-claro: #fff3e0;
+  --color-texto: #2c2c2a;
+  --color-texto-secundario: #5f5e5a;
+  --color-fondo: #fafaf8;
+  --color-borde: #e0ded6;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+a {
+  color: var(--color-naranja);
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radius);
+}
+
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.boton-primario {
+  background: var(--color-verde);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-weight: bold;
+}
+
+.boton-secundario {
+  background: white;
+  color: var(--color-verde);
+  border: 1.5px solid var(--color-verde);
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-weight: bold;
+}
+
+.tarjeta {
+  background: white;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radius);
+  padding: 16px;
+}
